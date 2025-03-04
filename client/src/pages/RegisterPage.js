@@ -77,93 +77,95 @@ const RegisterPage = () => {
 
 
   return (
-    <div className='mt-5'>
-        <div className='bg-white w-full max-w-md  rounded overflow-hidden p-4 mx-auto'>
-          <h3>Welcome to Chat app!</h3>
+    <div className='min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 to-secondary/5 px-4'>
+        <div className='bg-white w-full max-w-md rounded-lg shadow-xl p-8 mx-auto'>
+          <h2 className='text-3xl font-bold text-center text-gray-800 mb-2'>Create Account</h2>
+          <p className='text-center text-gray-600 mb-6'>Join our chat community today</p>
 
-          <form className='grid gap-4 mt-5' onSubmit={handleSubmit}>
-              <div className='flex flex-col gap-1'>
-                <label htmlFor='name'>Name :</label>
+          <form className='space-y-6' onSubmit={handleSubmit}>
+              <div className='space-y-2'>
+                <label htmlFor='name' className='text-sm font-medium text-gray-700'>Full Name</label>
                 <input
                   type='text'
                   id='name'
                   name='name'
-                  placeholder='enter your name' 
-                  className='bg-slate-100 px-2 py-1 focus:outline-primary'
+                  placeholder='John Doe' 
+                  className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors'
                   value={data.name}
                   onChange={handleOnChange}
                   required
                 />
               </div>
 
-              <div className='flex flex-col gap-1'>
-                <label htmlFor='email'>Email :</label>
+              <div className='space-y-2'>
+                <label htmlFor='email' className='text-sm font-medium text-gray-700'>Email Address</label>
                 <input
                   type='email'
                   id='email'
                   name='email'
-                  placeholder='enter your email' 
-                  className='bg-slate-100 px-2 py-1 focus:outline-primary'
+                  placeholder='you@example.com' 
+                  className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors'
                   value={data.email}
                   onChange={handleOnChange}
                   required
                 />
               </div>
 
-              <div className='flex flex-col gap-1'>
-                <label htmlFor='password'>Password :</label>
+              <div className='space-y-2'>
+                <label htmlFor='password' className='text-sm font-medium text-gray-700'>Password</label>
                 <input
                   type='password'
                   id='password'
                   name='password'
-                  placeholder='enter your password' 
-                  className='bg-slate-100 px-2 py-1 focus:outline-primary'
+                  placeholder='••••••••' 
+                  className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors'
                   value={data.password}
                   onChange={handleOnChange}
                   required
                 />
               </div>
 
-              <div className='flex flex-col gap-1'>
-                <label htmlFor='profile_pic'>Photo :
-
-                  <div className='h-14 bg-slate-200 flex justify-center items-center border rounded hover:border-primary cursor-pointer'>
-                      <p className='text-sm max-w-[300px] text-ellipsis line-clamp-1'>
-                        {
-                          uploadPhoto?.name ? uploadPhoto?.name : "Upload profile photo"
-                        }
-                      </p>
-                      {
-                        uploadPhoto?.name && (
-                          <button className='text-lg ml-2 hover:text-red-600' onClick={handleClearUploadPhoto}>
-                            <IoClose/>
-                          </button>
-                        )
-                      }
-                      
-                  </div>
-                
-                </label>
+              <div className='space-y-2'>
+                <label htmlFor='profile_pic' className='text-sm font-medium text-gray-700'>Profile Photo</label>
+                <div 
+                  className='relative h-16 bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg hover:border-primary cursor-pointer transition-colors flex items-center justify-center'
+                  onClick={() => document.getElementById('profile_pic').click()}
+                >
+                    <p className='text-sm text-gray-600 max-w-[300px] text-ellipsis line-clamp-1 px-4'>
+                      {uploadPhoto?.name ? uploadPhoto?.name : "Click to upload profile photo"}
+                    </p>
+                    {uploadPhoto?.name && (
+                      <button 
+                        className='absolute right-2 p-1 hover:bg-gray-200 rounded-full transition-colors'
+                        onClick={handleClearUploadPhoto}
+                      >
+                        <IoClose className='text-gray-600'/>
+                      </button>
+                    )}
+                </div>
                 
                 <input
                   type='file'
                   id='profile_pic'
                   name='profile_pic'
-                  className='bg-slate-100 px-2 py-1 focus:outline-primary hidden'
+                  className='hidden'
                   onChange={handleUploadPhoto}
                 />
               </div>
 
-
               <button
-               className='bg-primary text-lg  px-4 py-1 hover:bg-secondary rounded mt-2 font-bold text-white leading-relaxed tracking-wide'
+               className='w-full bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:bg-secondary transition-colors duration-300 shadow-lg hover:shadow-xl'
               >
-                Register
+                Create Account
               </button>
-
           </form>
 
-          <p className='my-3 text-center'>Already have account ? <Link to={"/email"} className='hover:text-primary font-semibold'>Login</Link></p>
+          <p className='mt-8 text-center text-gray-600'>
+            Already have an account? {' '}
+            <Link to={"/email"} className='text-primary hover:text-secondary font-semibold transition-colors'>
+              Sign in
+            </Link>
+          </p>
         </div>
     </div>
   )

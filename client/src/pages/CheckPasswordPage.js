@@ -70,33 +70,29 @@ const CheckPasswordPage = () => {
 
 
   return (
-    <div className='mt-5'>
-        <div className='bg-white w-full max-w-md  rounded overflow-hidden p-4 mx-auto'>
-
-            <div className='w-fit mx-auto mb-2 flex justify-center items-center flex-col'>
-                {/* <PiUserCircle
-                  size={80}
-                /> */}
+    <div className='min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 to-secondary/5 px-4'>
+        <div className='bg-white w-full max-w-md rounded-lg shadow-xl p-8 mx-auto'>
+            <div className='flex flex-col items-center mb-6'>
                 <Avatar
-                  width={70}
-                  height={70}
+                  width={80}
+                  height={80}
                   name={location?.state?.name}
                   imageUrl={location?.state?.profile_pic}
+                  className="ring-4 ring-primary/10"
                 />
-                <h2 className='font-semibold text-lg mt-1'>{location?.state?.name}</h2>
+                <h2 className='text-2xl font-bold text-gray-800 mt-4'>{location?.state?.name}</h2>
+                <p className='text-gray-500 text-sm mt-1'>{location?.state?.email}</p>
             </div>
 
-          <form className='grid gap-4 mt-3' onSubmit={handleSubmit}>
-              
-
-          <div className='flex flex-col gap-1'>
-                <label htmlFor='password'>Password :</label>
+          <form className='space-y-6' onSubmit={handleSubmit}>
+              <div className='space-y-2'>
+                <label htmlFor='password' className='text-sm font-medium text-gray-700'>Password</label>
                 <input
                   type='password'
                   id='password'
                   name='password'
-                  placeholder='enter your password' 
-                  className='bg-slate-100 px-2 py-1 focus:outline-primary'
+                  placeholder='Enter your password' 
+                  className='w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors'
                   value={data.password}
                   onChange={handleOnChange}
                   required
@@ -104,14 +100,20 @@ const CheckPasswordPage = () => {
               </div>
 
               <button
-               className='bg-primary text-lg  px-4 py-1 hover:bg-secondary rounded mt-2 font-bold text-white leading-relaxed tracking-wide'
+               className='w-full bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:bg-secondary transition-colors duration-300 shadow-lg hover:shadow-xl'
               >
-                Login
+                Sign In
               </button>
-
           </form>
 
-          <p className='my-3 text-center'><Link to={"/forgot-password"} className='hover:text-primary font-semibold'>Forgot password ?</Link></p>
+          <div className='mt-6 text-center'>
+            <Link 
+              to={"/forgot-password"} 
+              className='text-primary hover:text-secondary font-semibold transition-colors text-sm'
+            >
+              Forgot your password?
+            </Link>
+          </div>
         </div>
     </div>
   )

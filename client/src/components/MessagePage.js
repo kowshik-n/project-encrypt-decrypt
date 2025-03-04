@@ -198,7 +198,7 @@ const MessagePage = () => {
           </header>
 
           {/***show all message */}
-          <section className='h-[calc(100vh-128px)] overflow-x-hidden overflow-y-scroll scrollbar relative bg-slate-200 bg-opacity-50'>
+          <section className='h-[calc(100vh-165px)] overflow-x-hidden overflow-y-scroll scrollbar relative bg-slate-200 bg-opacity-50'>
                   
                 
                   {/**all message show here */}
@@ -312,15 +312,15 @@ const MessagePage = () => {
           </section>
 
           {/**send message */}
-          <section className='h-16 bg-white flex items-center px-4'>
+          <section className='h-[7rem] bg-white flex items-center px-4 border-t'>
               <div className='relative'>
                   <div className="flex gap-2">
-                    <button onClick={handleUploadImageVideoOpen} className='flex justify-center items-center w-11 h-11 rounded-full hover:bg-primary hover:text-white'>
+                    <button onClick={handleUploadImageVideoOpen} className='flex justify-center items-center w-10 h-10 rounded-full hover:bg-gray-100 text-gray-600'>
                       <FaPlus size={20}/>
                     </button>
                     <button 
                       onClick={toggleEncryption}
-                      className={`flex justify-center items-center w-11 h-11 rounded-full hover:bg-primary hover:text-white ${message.encrypt ? 'bg-primary text-white' : ''}`}
+                      className={`flex justify-center items-center w-10 h-10 rounded-full hover:bg-gray-100 text-gray-600 ${message.encrypt ? 'bg-[#00a884] text-white' : ''}`}
                       title={message.encrypt ? "Disable encryption" : "Enable encryption"}
                     >
                       {message.encrypt ? <MdLock size={20}/> : <MdLockOpen size={20}/>}
@@ -330,19 +330,19 @@ const MessagePage = () => {
                   {/**video and image */}
                   {
                     openImageVideoUpload && (
-                      <div className='bg-white shadow rounded absolute bottom-14 w-36 p-2'>
+                      <div className='bg-white shadow-lg rounded-lg absolute bottom-14 w-48 py-2'>
                       <form>
-                          <label htmlFor='uploadImage' className='flex items-center p-2 px-3 gap-3 hover:bg-slate-200 cursor-pointer'>
-                              <div className='text-primary'>
-                                  <FaImage size={18}/>
+                          <label htmlFor='uploadImage' className='flex items-center py-3 px-4 gap-4 hover:bg-gray-50 cursor-pointer'>
+                              <div className='text-[#00a884]'>
+                                  <FaImage size={20}/>
                               </div>
-                              <p>Image</p>
+                              <p className='text-gray-700'>Photos</p>
                           </label>
-                          <label htmlFor='uploadVideo' className='flex items-center p-2 px-3 gap-3 hover:bg-slate-200 cursor-pointer'>
-                              <div className='text-purple-500'>
-                                  <FaVideo size={18}/>
+                          <label htmlFor='uploadVideo' className='flex items-center py-3 px-4 gap-4 hover:bg-gray-50 cursor-pointer'>
+                              <div className='text-[#00a884]'>
+                                  <FaVideo size={20}/>
                               </div>
-                              <p>Video</p>
+                              <p className='text-gray-700'>Videos</p>
                           </label>
 
                           <input 
@@ -366,28 +366,28 @@ const MessagePage = () => {
               </div>
 
               {/**input box */}
-              <form className='h-full w-full flex flex-col gap-2' onSubmit={handleSendMessage}>
+              <form className='h-full w-full flex flex-col gap-2 justify-center' onSubmit={handleSendMessage}>
                   {showEncryptInput && (
                     <input
                       type='text'
                       name="secretKey"
                       placeholder='Enter encryption key...'
-                      className='py-1 px-4 outline-none w-full border-b'
+                      className='py-2 px-4 outline-none w-full border-b text-sm'
                       value={message.secretKey}
                       onChange={handleOnChange}
                     />
                   )}
-                  <div className="flex gap-2">
+                  <div className="flex items-center gap-2 bg-gray-50 rounded-full px-4 py-2">
                     <input
                       type='text'
                       name="text"
-                      placeholder='Type here message...'
-                      className='py-1 px-4 outline-none w-full h-full'
+                      placeholder='Message'
+                      className='bg-transparent py-1 px-2 outline-none w-full text-gray-700'
                       value={message.text}
                       onChange={handleOnChange}
                     />
-                    <button className='text-primary hover:text-secondary'>
-                        <IoMdSend size={28}/>
+                    <button className='text-[#00a884] hover:text-[#017561] p-1'>
+                        <IoMdSend size={24}/>
                     </button>
                   </div>
               </form>
